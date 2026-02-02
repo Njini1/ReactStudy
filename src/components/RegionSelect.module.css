@@ -1,21 +1,43 @@
 .block {
   border: 1px solid var(--line);
   border-radius: var(--r);
-  padding: 10px;
+  padding: 5px;
+  /* padding: 0px 10px 0px 10px; */
   background: #fff;
 }
 
+/* ✅ h3 + select들을 한 줄 헤더로 */
+.head {
+  display: flex;
+  /*align-items: flex-start;*/
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* h3는 너무 커 보이지 않게 */
 .title {
-  margin: 0 0 8px;
+  /*margin: 0;*/
   font-size: 13px;
   font-weight: 980;
   color: var(--text);
+  white-space: nowrap;
+  /*padding-top: 2px; /* 라벨/셀렉트 시작선 맞춤 */
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* ✅ 오른쪽에 select 2개를 나란히 */
+.selectRow {
+  display: flex;
   gap: 8px;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  /*justify-content: flex-end;*/
+  min-width: 0;
+}
+
+.field {
+  min-width: 140px; /* PC에서 너무 작아지지 않게 */
+  flex: 0 0 auto;
 }
 
 .label {
@@ -36,4 +58,18 @@
   color: var(--text);
   background: #fff;
   outline: none;
+}
+
+/* ✅ 화면 좁아지면 아래로 떨어지게 */
+@media (max-width: 520px) {
+  .head {
+    flex-direction: column;
+  }
+  .selectRow {
+    justify-content: flex-start;
+  }
+  .field {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
 }
