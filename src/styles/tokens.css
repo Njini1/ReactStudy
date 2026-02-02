@@ -1,0 +1,26 @@
+:root {
+  --bg: #ffffff;
+  --text: #071327;
+  --muted: #0f2b5a;
+  --line: #cfd9ef;
+
+  --surface: #ffffff;
+  --surface2: #f7f9ff;
+
+  --navy1: rgba(8, 21, 46, 0.98);
+  --navy2: rgba(10, 29, 58, 0.98);
+
+  --blue: #467cda;
+  --green: #28b88f;
+  --red: #c03548;
+
+  --shadow: 0 3px 10px rgba(7, 19, 39, 0.1);
+  --r: 12px;
+
+  --font:
+    ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+    Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
