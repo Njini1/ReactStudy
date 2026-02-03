@@ -23,7 +23,6 @@ export default function RegionSelect() {
         <span className={styles.rowText}>지역 선택</span>
       </div>
 
-      {/* ✅ select 2개를 한 줄로 */}
       <div className={styles.rowBody}>
         <select className={styles.select} defaultValue="인천광역시">
           <option>특·광역시도 선택</option>

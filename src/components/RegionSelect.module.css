@@ -30,7 +30,6 @@
   color: #2b2f36;
 }
 
-/* ✅ select 2개 나란히 */
 .rowBody {
   display: flex;
   gap: 12px;
