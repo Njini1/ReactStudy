@@ -1,67 +1,51 @@
 import styles from "./TargetSelect.module.css";
 
-export type TargetLayers = {
-  pipe: boolean;
-  depth: boolean;
-  manhole: boolean;
-  valve: boolean;
-};
-
 type Props = {
-  value: TargetLayers;
-  onChange: (v: TargetLayers) => void;
+  chips: string[];
 };
 
-function toggle(v: TargetLayers, key: keyof TargetLayers): TargetLayers {
-  return { ...v, [key]: !v[key] };
-}
-
-export default function TargetSelect({ value, onChange }: Props) {
+export default function TargetSelect({ chips }: Props) {
   return (
-    <section className={styles.block} aria-label="검사 대상 분류">
-      <h3 className={styles.title}>검사 대상 분류</h3>
+    <div className={styles.row} aria-label="검사 대상 분류">
+      <div className={styles.rowLabel}>
+        <span className={styles.icon} aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
+          </svg>
+        </span>
+        <span className={styles.rowText}>검사 대상 분류</span>
+      </div>
 
-      <div className={styles.grid}>
-        <div
-          className={`${styles.card} ${value.pipe ? styles.cardOn : ""}`}
-          onClick={() => onChange(toggle(value, "pipe"))}
-          role="button"
-          tabIndex={0}
-        >
-          <span className={styles.name}>상수 관로</span>
-          <span className={styles.badge}>{value.pipe ? "ON" : "OFF"}</span>
+      <div className={styles.rowBody}>
+        <div className={styles.chips}>
+          {chips.map((t, idx) => (
+            <button key={idx} type="button" className={styles.chip}>
+              {t}
+            </button>
+          ))}
         </div>
 
-        <div
-          className={`${styles.card} ${value.depth ? styles.cardOn : ""}`}
-          onClick={() => onChange(toggle(value, "depth"))}
-          role="button"
-          tabIndex={0}
-        >
-          <span className={styles.name}>상수 심도</span>
-          <span className={styles.badge}>{value.depth ? "ON" : "OFF"}</span>
-        </div>
-
-        <div
-          className={`${styles.card} ${value.manhole ? styles.cardOn : ""}`}
-          onClick={() => onChange(toggle(value, "manhole"))}
-          role="button"
-          tabIndex={0}
-        >
-          <span className={styles.name}>상수 맨홀</span>
-          <span className={styles.badge}>{value.manhole ? "ON" : "OFF"}</span>
-        </div>
-
-        <div
-          className={`${styles.card} ${value.valve ? styles.cardOn : ""}`}
-          onClick={() => onChange(toggle(value, "valve"))}
-          role="button"
-          tabIndex={0}
-        >
-          <span className={styles.name}>상수 밸브</span>
-          <span className={styles.badge}>{value.valve ? "ON" : "OFF"}</span>
+        <div className={styles.actions}>
+          <button className={styles.primaryBtn} type="button">
+            <span className={styles.check} aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M20 6 9 17l-5-5"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            품질 검수
+          </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
